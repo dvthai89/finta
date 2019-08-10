@@ -46,7 +46,7 @@ def test_resample_calendar():
 def test_trending_up():
 
     df = to_dataframe(data)
-    ma = TA.HMA(df)
+    ma = TA.HMA(df["close"])
     assert isinstance(trending_up(ma, 10), Series)
 
     assert not trending_up(ma, 10).values[-1]
@@ -55,7 +55,7 @@ def test_trending_up():
 def test_trending_down():
 
     df = to_dataframe(data)
-    ma = TA.HMA(df)
+    ma = TA.HMA(df["close"])
     assert isinstance(trending_down(ma, 10), Series)
 
     assert trending_down(ma, 10).values[-1]
